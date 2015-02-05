@@ -1,0 +1,38 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>To Do List</title>
+
+    <script type="html/template" id="itemTmpl">
+    <section data-itemid="<%= _id %>">
+    <h3><%= listItemText %></h3>
+    </section>
+    </script>
+
+  </head>
+  <body>
+    <section class="wrapper">
+
+      <header>
+        <h1>To Do List</h1>
+        <nav>
+          <button class="allItems" name="all">All</button>
+          <button class="activeItems" name="active">Active</button>
+          <button class="completedItems" name="completed">Completed</button>
+          <button class="add" name="completed" type="submit">Add</button>
+        </nav>
+        <input type="text" class="listItemInput" name="listItemInputName">
+      </header>
+
+      <section class="container">
+      </section>
+
+    </section>
+
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="templates.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
