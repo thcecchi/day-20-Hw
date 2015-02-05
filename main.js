@@ -47,15 +47,9 @@ $(document).ready(function () {
       $('.wrapper').on('dblclick', '.listItem', function (event) {
         event.preventDefault();
 
-        $('.listItem').replaceWith('<input type="text" class="updateListItem" name="updateListItem"> value="<%= listItemText %>"');
+        $(this).closest('.listItem').replaceWith('<input type="text" class="updateListItem" name="updateListItem"> value="<%= listItemText %>"</input>');
 
         var itemId = $('.listItemCard').data('itemid');
-
-        // var editedListItem = {
-        //   listItemText: $('.updateListItem').val()
-        // }
-
-        // toDoList.updateListItem(itemId, editedListItem);
 
       });
 
