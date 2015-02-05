@@ -14,29 +14,55 @@ $(document).ready(function () {
     },
 
     initStyle: function () {
-
+      toDoList.renderAllListItems();
     },
 
     initEvents: function () {
+
       // Take input and add a list item
-      var add = $('.add').on('click', function (event) {
+      $('.wrapper').on('click', '.add', function (event) {
         event.preventDefault();
 
-        var inputText = $('input').val();
-
         var newListItem = {
-          listItemText: inputText
+          listItemText: $('.enterListItem').val()
         }
 
         toDoList.createListItem(newListItem);
 
       });
 
-      },
+      // Delete current
+      $('.wrapper').on('click', '.delete', function (event) {
+        event.preventDefault();
+
+        var itemId = $(this).closest('.itemWrapper').data('itemid');
+        console.log(itemId);
+        toDoList.deleteListItem(itemId);
+      });
+
+      // Update current
+      $(this).on('dblclick', function (event) {
+        event.preventDefault();
+
+        var itemId = $(this).closest('.itemWrapper').data('itemid');
+
+        $(this).replaceWith('<input type="text" class="updateListItem" name="updateListItem">');
+
+        var editedListItem = {
+          listItemText: $('.updateListItem').val()
+        }
+
+        toDoList.updateListItem(itemId, editedListItem);
+
+      });
+
+    },
+
     render: function (data, tmpl, $el) {
     var template = _.template(data, tmpl);
 
       $el.append(template);
+
       },
 
     renderAllListItems: function () {
@@ -51,7 +77,7 @@ $(document).ready(function () {
             markup += template(item);
           });
           console.log('markup is.....', markup);
-          $('section').html(markup);
+          $('.container').html(markup);
         },
 
         error: function (err) {
@@ -62,6 +88,7 @@ $(document).ready(function () {
     },
 
     createListItem: function (items) {
+
       $.ajax({
         url: toDoList.config.url,
         data: items,
@@ -80,34 +107,34 @@ $(document).ready(function () {
 
     deleteListItem: function (id) {
 
-      // $.ajax({
-      //   url: toDoList.config.url + '/' + id,
-      //   type: 'DELETE',
-      //   success: function (data) {
-      //     console.log(data);
-      //     toDoList.renderAllListItems();
-      //   },
-      //   error: function (err) {
-      //     console.log(err);
-      //   }
-      // });
+      $.ajax({
+        url: toDoList.config.url + '/' + id,
+        type: 'DELETE',
+        success: function (data) {
+          console.log(data);
+          toDoList.renderAllListItems();
+        },
+        error: function (err) {
+          console.log(err);
+        }
+      });
 
     },
 
     updateListItem: function (id, items) {
 
-        // $.ajax({
-        //   url: toDoList.config.url + '/' + id,
-        //   data: items,
-        //   type: 'PUT',
-        //   success: function (data) {
-        //     console.log(data);
-        //     toDoList.renderAllListItems();
-        //   },
-        //   error: function (err) {
-        //     console.log(err);
-        //   }
-        // });
+        $.ajax({
+          url: toDoList.config.url + '/' + id,
+          data: items,
+          type: 'PUT',
+          success: function (data) {
+            console.log(data);
+            toDoList.renderAllListItems();
+          },
+          error: function (err) {
+            console.log(err);
+          }
+        });
     }
 
   }

@@ -4,9 +4,9 @@
     <title>To Do List</title>
 
     <script type="html/template" id="itemTmpl">
-    <section data-itemid="<%= _id %>">
-    <h3><%= listItemText %></h3>
-    </section>
+      <section class='itemWrapper' data-itemid='<%= _id %>'>
+      <h3><%= listItemText %></h3>
+      </section>
     </script>
 
   </head>
@@ -18,10 +18,12 @@
         <nav>
           <button class="allItems" name="all">All</button>
           <button class="activeItems" name="active">Active</button>
-          <button class="completedItems" name="completed">Completed</button>
-          <button class="add" name="completed" type="submit">Add</button>
+          <button class="completedItems" name="completed">Completed</button> |
+          <button class="add" name="completed">Add</button>
+          <button class="update" name="update">Update</button>
+          <button class="delete" name="delete">Delete</button>
         </nav>
-        <input type="text" class="listItemInput" name="listItemInputName">
+        <input type="text" class="enterListItem" name="enterListItem">
       </header>
 
       <section class="container">
@@ -32,7 +34,7 @@
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
-    <script src="templates.js"></script>
+    <!-- // <script src="templates.js"></script> -->
     <script src="main.js"></script>
   </body>
 </html>
