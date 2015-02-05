@@ -19,7 +19,8 @@ $(document).ready(function () {
 
     initEvents: function () {
 
-      // Take input and add a list item
+      // Take input and add a list item ////
+      /////////////////////////////////////
       $('.wrapper').on('click', '.add', function (event) {
         event.preventDefault();
 
@@ -31,22 +32,37 @@ $(document).ready(function () {
 
       });
 
-      // Delete current
+      // Delete current ////
+      /////////////////////
       $('.wrapper').on('click', '.delete', function (event) {
         event.preventDefault();
 
-        var itemId = $(this).closest('.itemWrapper').data('itemid');
+        var itemId = $('.listItemCard').data('itemid');
         console.log(itemId);
         toDoList.deleteListItem(itemId);
       });
 
-      // Update current
-      $(this).on('dblclick', function (event) {
+      // Update current ////
+      /////////////////////
+      $('.wrapper').on('dblclick', '.listItem', function (event) {
         event.preventDefault();
 
-        var itemId = $(this).closest('.itemWrapper').data('itemid');
+        $('.listItem').replaceWith('<input type="text" class="updateListItem" name="updateListItem"> value="<%= listItemText %>"');
 
-        $(this).replaceWith('<input type="text" class="updateListItem" name="updateListItem">');
+        var itemId = $('.listItemCard').data('itemid');
+
+        // var editedListItem = {
+        //   listItemText: $('.updateListItem').val()
+        // }
+
+        // toDoList.updateListItem(itemId, editedListItem);
+
+      });
+
+      $('.wrapper').on('click', '.update', function (event) {
+        event.preventDefault();
+
+        var itemId = $('.listItemCard').data('itemid');
 
         var editedListItem = {
           listItemText: $('.updateListItem').val()
@@ -63,7 +79,7 @@ $(document).ready(function () {
 
       $el.append(template);
 
-      },
+    },
 
     renderAllListItems: function () {
       $.ajax({
@@ -71,10 +87,12 @@ $(document).ready(function () {
         type: 'GET',
         success: function (items) {
 
-          var template = _.template($('#itemTmpl').html());
+          var compiledTemplate = _.template(templates.toDoList);
+          // $('.container').append(compiledTemplate);
+
           var markup = "";
           items.forEach(function (item, idx, arr) {
-            markup += template(item);
+            markup += compiledTemplate(item);
           });
           console.log('markup is.....', markup);
           $('.container').html(markup);
