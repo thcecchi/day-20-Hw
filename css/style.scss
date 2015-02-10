@@ -1,0 +1,77 @@
+h1 {
+  text-align: center;
+  padding-bottom: 5%;
+  padding-top: 2%;
+}
+
+.add {
+  background-color: tomato;
+  border-radius: 10%;
+
+  &:hover {
+    background-color: crimson;
+  }
+
+  &:click {
+    background-color: crimson;
+  }
+
+}
+
+input.enterListItem {
+  border: none;
+  font-size: 2em;
+  outline: 0;
+  text-align: center;
+  height: 40px;
+  text-align: center;
+  box-shadow: none;
+}
+
+
+.container {
+  display: block;
+  width: 100%;
+}
+
+.listItemCard {
+  border: 2px dashed tomato;
+  margin-bottom: 2%;
+  color: gray;
+
+
+  h5 {
+    text-align: center;
+    display: inline-block
+  }
+
+  .fa {
+    display: inline-block;
+    float: right;
+    padding-left: 5%;
+    padding-top: 1%;
+    cursor: pointer;
+  }
+
+  .update {
+    display: none;
+  }
+
+}
+
+.completedItem {
+  border: 2px dashed gainsboro;
+}
+
+.completedTitle {
+  h3 {
+    color: black;
+    text-align: center;
+    display: inline;
+    text-align: center;
+  }
+}
+
+.completed {
+
+}
