@@ -168,16 +168,17 @@ $(document).ready(function () {
           items.forEach(function (item, idx, arr) {
             markup += compiledTemplate(item);
           });
+
           newArr = []
+          // push each data object to array ///
+          ////////////////////////////////////
           items.forEach(function(item, idx, arr) {
-              // if (_.has(item, "completed")==true) {
-              //   item.detach();
-              //   item.appendTo('.completed').css('border', '2px dashed gainsboro');
-              // }
             newArr.push(item)
             console.log(newArr)
           })
 
+          // THIS STILL DOES NOT WORK!!!!!!! loop though each array element to looking for the "completed" key ///
+          ////////////////////////////////////////////////////////////////////////
           _.each(newArr, function (element, index, list) {
             if (_.has(element, "completed")) {
               element[index].detach();
