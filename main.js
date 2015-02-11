@@ -34,8 +34,8 @@ $(document).ready(function () {
         $('.completedTitle').hide()
       }
 
-      var detachedItem = $(this).parent('.listItemCard').detach();
-       detachedItem.appendTo('.completed').css('border', '2px dashed gainsboro');
+var detachedItem = $(this).parent('.listItemCard').detach();
+ detachedItem.appendTo('.completed').css('border', '2px dashed gainsboro');
 
        // push completed task itemid to array ///
       //////////////////////////////////////////
@@ -51,6 +51,7 @@ $(document).ready(function () {
       }
 
       toDoList.addedListItem(itemId, addedListItem);
+      // toDoList.renderAllListItems();
 
 
        // count number of completed tasks ///
@@ -81,6 +82,11 @@ $(document).ready(function () {
         var newListItem = {
           listItemText: $('.enterListItem').val()
         }
+
+        $('.listItemCard').detach()
+
+        $('.container').first('.listItemCard').addClass("bounceIn")
+
 
         toDoList.createListItem(newListItem);
 
@@ -126,7 +132,7 @@ $(document).ready(function () {
       $('.wrapper').on('dblclick', '.listItem', function (event) {
         event.preventDefault();
 
-        // replace text iwth input and add update button ////
+        // replace text with input and add update button ////
         ////////////////////////////////////////////////////
         $(this).closest('.listItem').replaceWith('<input type="text" class="updateListItem" name="updateListItem"</input>');
 
@@ -170,26 +176,39 @@ $(document).ready(function () {
           });
 
           newArr = []
+
           // push each data object to array ///
           ////////////////////////////////////
           items.forEach(function(item, idx, arr) {
             newArr.push(item)
-            console.log(newArr)
           })
-
-          // THIS STILL DOES NOT WORK!!!!!!! loop though each array element to looking for the "completed" key ///
-          ////////////////////////////////////////////////////////////////////////
-          _.each(newArr, function (element, index, list) {
-            if (_.has(element, "completed")) {
-              element[index].detach();
-              element[index].appendTo('.completed').css('border', '2px dashed gainsboro');
-            }
-          })
-
-
+          console.log(newArr)
 
           console.log('markup is.....', markup);
           $('.container').html(markup);
+
+          newItemIdArr = []
+
+          newArr.forEach(function(currentValue, index, array) {
+            if (_.has(currentValue, "completed")) {
+              console.log(true)
+              var newItemId = currentValue._id
+              newItemIdArr.push(newItemId)
+            }
+          })
+
+          newItemIdArr.forEach(function (currentValue, index, aray) {
+
+            $('.listItemCard').each( function (index) {
+
+                if ($(this).data('itemid') == currentValue) {
+
+                  $(this).detach()
+                  $(this).appendTo('.completed').css('border', '2px dashed gainsboro')
+                }
+              })
+            })
+
         },
 
         error: function (err) {
@@ -225,7 +244,7 @@ $(document).ready(function () {
         type: 'DELETE',
         success: function (data) {
           console.log(data);
-          toDoList.renderAllListItems();
+          // toDoList.renderAllListItems();
         },
         error: function (err) {
           console.log(err);
