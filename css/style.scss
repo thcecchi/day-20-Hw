@@ -1,19 +1,22 @@
 h1 {
   text-align: center;
   padding-bottom: 5%;
-  padding-top: 2%;
+  padding-top: 10%;
   font-family: 'Helvetica', sans-serif;
+  color: indigo;
+  margin-bottom: -2%;
+  font-weight: bold;
 }
 
-.add {
-  background-color: tomato;
+.add, .update {
+  background-color:  lightgray;
   border-radius: 10%;
 
   &:hover {
     background-color: crimson;
   }
 
-  &:click {
+  &:active {
     background-color: crimson;
   }
 
@@ -27,6 +30,14 @@ input.enterListItem {
   height: 40px;
   text-align: center;
   box-shadow: none;
+  color: black;
+  margin-top: 1%;
+
+
+  &:focus {
+    background-color: chartreuse;
+
+  }
 }
 
 
@@ -36,7 +47,7 @@ input.enterListItem {
 }
 
 .listItemCard {
-  border: 2px dashed tomato;
+  border: 2px dashed chartreuse;
   margin-bottom: 2%;
   color: gray;
 
@@ -50,8 +61,9 @@ input.enterListItem {
     display: inline-block;
     float: right;
     padding-left: 5%;
-    padding-top: 1%;
+    padding-top: 2%;
     cursor: pointer;
+    color: crimson;
   }
 
   .update {

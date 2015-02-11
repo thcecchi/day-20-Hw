@@ -1,15 +1,18 @@
 h1 {
   text-align: center;
   padding-bottom: 5%;
-  padding-top: 2%;
-  font-family: 'Helvetica', sans-serif; }
+  padding-top: 10%;
+  font-family: 'Helvetica', sans-serif;
+  color: indigo;
+  margin-bottom: -2%;
+  font-weight: bold; }
 
-.add {
-  background-color: tomato;
+.add, .update {
+  background-color: lightgray;
   border-radius: 10%; }
-  .add:hover {
+  .add:hover, .update:hover {
     background-color: crimson; }
-  .add:click {
+  .add:active, .update:active {
     background-color: crimson; }
 
 input.enterListItem {
@@ -19,14 +22,18 @@ input.enterListItem {
   text-align: center;
   height: 40px;
   text-align: center;
-  box-shadow: none; }
+  box-shadow: none;
+  color: black;
+  margin-top: 1%; }
+  input.enterListItem:focus {
+    background-color: chartreuse; }
 
 .container {
   display: block;
   width: 100%; }
 
 .listItemCard {
-  border: 2px dashed tomato;
+  border: 2px dashed chartreuse;
   margin-bottom: 2%;
   color: gray; }
   .listItemCard h5 {
@@ -36,8 +43,9 @@ input.enterListItem {
     display: inline-block;
     float: right;
     padding-left: 5%;
-    padding-top: 1%;
-    cursor: pointer; }
+    padding-top: 2%;
+    cursor: pointer;
+    color: crimson; }
   .listItemCard .update {
     display: none; }
 

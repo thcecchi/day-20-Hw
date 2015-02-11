@@ -34,8 +34,10 @@ $(document).ready(function () {
         $('.completedTitle').hide()
       }
 
-var detachedItem = $(this).parent('.listItemCard').detach();
- detachedItem.appendTo('.completed').css('border', '2px dashed gainsboro');
+      var detachedItem = $(this).parent('.listItemCard').detach();
+      detachedItem.appendTo('.completed').css('border', '2px dashed gainsboro');
+      $(this).siblings('.fa').css('color', 'black')
+      $(this).css('color', 'black')
 
        // push completed task itemid to array ///
       //////////////////////////////////////////
@@ -83,10 +85,7 @@ var detachedItem = $(this).parent('.listItemCard').detach();
           listItemText: $('.enterListItem').val()
         }
 
-        $('.listItemCard').detach()
-
-        $('.container').first('.listItemCard').addClass("bounceIn")
-
+        $(this).find('.listItemCard').addClass("fadeIn")
 
         toDoList.createListItem(newListItem);
 
@@ -136,7 +135,7 @@ var detachedItem = $(this).parent('.listItemCard').detach();
         ////////////////////////////////////////////////////
         $(this).closest('.listItem').replaceWith('<input type="text" class="updateListItem" name="updateListItem"</input>');
 
-        $('button.update').show()
+        $('input').siblings('.update').show()
       });
 
       $('.wrapper').on('click', '.update', function (event) {
@@ -166,6 +165,7 @@ var detachedItem = $(this).parent('.listItemCard').detach();
         url: toDoList.config.url,
         type: 'GET',
         success: function (items) {
+          $('.listItemCard').detach()
 
           var compiledTemplate = _.template(templates.toDoList);
           // $('.container').append(compiledTemplate)
@@ -205,6 +205,7 @@ var detachedItem = $(this).parent('.listItemCard').detach();
 
                   $(this).detach()
                   $(this).appendTo('.completed').css('border', '2px dashed gainsboro')
+                  $(this).find('.fa').css('color', 'black')
                 }
               })
             })
@@ -227,7 +228,7 @@ var detachedItem = $(this).parent('.listItemCard').detach();
         type: 'POST',
         success: function (data) {
           console.log(data);
-          toDoList.renderAllListItems();
+          toDoList.renderAllListItems()
         },
 
         error: function (err) {

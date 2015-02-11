@@ -8,32 +8,36 @@
     <link rel="stylesheet" href="/css/compiledStyle.css">
   </head>
   <body>
-    <section class="wrapper">
+    <div class="row">
+
+    <section class="wrapper large-7 large-centered columns ">
 
       <header class="row">
         <h1 class="small-12 large-12 columns">To Do List</h1>
       </header>
         <nav class="row">
-          <form>
-              <div class="large-8 columns">
+          <form class="inputForm">
+              <div class="large-9 columns">
                 <input type="text" class="enterListItem" name="enterListItem" placeholder="enter list item." />
             </div>
+            <button type="submit" class="large-2 columns add end" name="completed">Add</button>
           </form>
-          <button class="large-1 columns add" name="completed">Add</button>
         </nav>
 
-      <section class="container row">
-      </section>
+        <section class="container large-12 columns">
+        </section>
+
 
       <section class="row">
-        <div class="completedTitle">
+        <div class="completedTitle large-4 columns">
           <h3 id="completedCount">0</h3><h3> Completed.</h3>
         </div>
 
-        <div class="large-12 columns completed">
+        <div class="completed large-11 large-centered columns">
         </div>
       </section>
     </section>
+  </div>
 
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
